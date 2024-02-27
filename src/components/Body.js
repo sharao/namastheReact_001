@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import RestaurantCard from './RestaurantCard';
 import { Button, Input } from '@mui/material';
 import Shimmer from './Shimmer';
+import { Link } from 'react-router-dom';
 function Body() {
  const [restaurants, setRestaurants] = useState([]);
  const [filteredRes, setFilteredRes] = useState([]);
@@ -35,7 +36,9 @@ function Body() {
     <div className="res-container">
      {filteredRes.length
       ? filteredRes.map((res) => (
-         <RestaurantCard resData={res} key={res.info.id} />
+         <Link to={'/restaurants/' + res.info.id} key={res.info.id}>
+          <RestaurantCard resData={res} />
+         </Link>
         ))
       : 'No Restaurants Found'}
     </div>
